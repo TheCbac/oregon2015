@@ -9,6 +9,7 @@ var layout = new famous.views.HeaderFooterLayout();
 var Surface = require('famous/core/Surface');
 var Scrollview = require('famous/views/Scrollview');
 var ScrollSync = require('famous/inputs/ScrollSync');
+var ImageSurface = require('famous/surfaces/ImageSurface');
 
 layout.header.add(new Surface({
 	size:[undefined, 100],
@@ -26,36 +27,72 @@ var surfaces = [];
 
 scroll.sequenceFrom(surfaces);
 
+// First block
+var nameBlock = new ImageSurface();
+nameBlock.setContent("http://www.amazingplacesonearth.com/wp-content/uploads/2012/08/mount-hood.jpg");
+nameBlock.pipe(scroll);
+surfaces.push(nameBlock);
 
-var image = new Surface ({
-	content:"Test",
-	size: [undefined, 300],
-	 properties: {
-            backgroundColor: "blue",
-            color: "#404040",
-            lineHeight: '200px',
-            textAlign: 'center'
-        }
-	});
-
-// image.pipe(scroll);
-// surface.push(image);
-
-for(var i = 0; i < 8; i++) {
-    var temp =new Surface({
-        content: "panel " + (i + 1),
+// Second block
+var dateBlock = new Surface({
+	content: "dateBlock ",
         size: [undefined, 400],
         properties: {
-            backgroundColor: "hsl(" + (i * 360 / 8) + ", 100%, 50%)",
+            backgroundColor: "black",
             color: "#404040",
             lineHeight: '200px',
             textAlign: 'center'
         }
-    });
+});
+dateBlock.pipe(scroll);
+surfaces.push(dateBlock);
 
-    temp.pipe(scroll);
-    surfaces.push(temp);
-}
+
+// third block - hosts
+var hostsBlock = new Surface({
+	content: "hostsBlock ",
+        size: [undefined, 400],
+        properties: {
+            backgroundColor: "gray",
+            color: "#404040",
+            lineHeight: '200px',
+            textAlign: 'center'
+        }
+});
+hostsBlock.pipe(scroll);
+surfaces.push(hostsBlock);
+
+// fourth block - group description
+var groupBlock = new Surface({
+	content: "groupBlock ",
+        size: [undefined, 400],
+        properties: {
+            backgroundColor: "black",
+            color: "#404040",
+            lineHeight: '200px',
+            textAlign: 'center'
+        }
+});
+groupBlock.pipe(scroll);
+surfaces.push(groupBlock);
+
+
+
+// for(var i = 0; i < 8; i++) {
+//     var temp =new Surface({
+//         content: "panel " + (i + 1),
+//         size: [undefined, 400],
+//         properties: {
+//             backgroundColor: "hsl(" + (i * 360 / 8) + ", 100%, 50%)",
+//             color: "#404040",
+//             lineHeight: '200px',
+//             textAlign: 'center'
+//         }
+//     });
+
+//     temp.pipe(scroll);
+//     surfaces.push(temp);
+// }
 
 layout.content.add(scroll);
 
