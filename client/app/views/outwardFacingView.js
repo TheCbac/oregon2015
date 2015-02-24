@@ -1,7 +1,7 @@
 var View 			= require('famous/core/View');
 var Surface 		= require('famous/core/Surface');
 var Transform 		= require('famous/core/Transform');
-var StateModifier 	= require('famous/modifier/StateModifier');
+var StateModifier 	= require('famous/modifiers/StateModifier');
 
 outwardFacingView = function () {
 	View.apply(this, arguments);
