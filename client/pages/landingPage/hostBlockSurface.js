@@ -4,6 +4,7 @@ var ImageSurface 		= require('famous/surfaces/ImageSurface');
 var ContainerSurface 	= require('famous/surfaces/ContainerSurface');
 var StateModifier   	= require('famous/modifiers/StateModifier');
 var Transform 			= require('famous/core/Transform');
+var EventHandler 		= require('famous/core/EventHandler');
 
 // third block - hosts
 hostBlockSurface = function() {
@@ -73,6 +74,9 @@ hostBlockSurface = function() {
 	hostsBlockContainer.add(hostBlockDescriptionMod).add(hostBlockDescriptionText);
 	hostsBlockContainer.add(craigStateModifier).add(craigPictureSurface);
 	hostsBlockContainer.add(kaleStateModifier).add(kalePictureSurface);
+
+
+
 	
 	return hostsBlockContainer;
 };

@@ -5,6 +5,7 @@ famous.core.famous;
 var mainContext = famous.core.Engine.createContext();
 var layout = new famous.views.HeaderFooterLayout();
 var Scrollview = require('famous/views/Scrollview');
+var EventHandler 		= require('famous/core/EventHandler');
 
 
 
@@ -12,12 +13,13 @@ var Scrollview = require('famous/views/Scrollview');
 getBlockHeight = function() {
 	var winHeight = window.innerHeight;
 	//console.log(window.innerHeight);
-	return winHeight*0.9;
+	return winHeight*0.75;
 };
 
 
-
-layout.content.add(backgroundImageBlock());
+//var backgroundBlock = backgroundImageBlock.create();
+var backgroundBlock = backgroundImageBlock();
+layout.content.add(backgroundBlock);
 
 /* Header block */
 //layout.header.add(headerBlockSurface());
@@ -59,6 +61,22 @@ surfaces.push(groupBlock);
 footerBlock = footerBlockSurface();
 footerBlock.pipe(scroll);
 surfaces.push(footerBlock);
+
+
+
+var eventHandler = new EventHandler();
+
+hostBlock.on('mouseover', function(event){
+	console.log("test");
+	eventHandler.emit('swapPictures');
+});
+
+eventHandler.on('swapPictures', function() {
+	console.log("swap");
+});
+
+
+
 
 /* Create the main context */
 layout.content.add(scroll);

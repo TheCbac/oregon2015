@@ -6,7 +6,7 @@ groupBlockSurface = function(){
 	content: "<p>Our Group</p>",
         size: [undefined, getBlockHeight()],
         properties: {
-            backgroundColor: "black",
+            // backgroundColor: "black",
             color: "white",
              lineHeight: '40px',
             textAlign: 'center',
