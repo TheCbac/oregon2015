@@ -3,7 +3,7 @@ famous.core.famous;
 
 /* Requires */
 var mainContext = famous.core.Engine.createContext();
-var layout = new famous.views.HeaderFooterLayout();
+//var layout = new famous.views.HeaderFooterLayout();
 var Scrollview = require('famous/views/Scrollview');
 var EventHandler 		= require('famous/core/EventHandler');
 
@@ -13,27 +13,36 @@ var EventHandler 		= require('famous/core/EventHandler');
 getBlockHeight = function() {
 	var winHeight = window.innerHeight;
 	//console.log(window.innerHeight);
-	return winHeight*0.75;
+	return winHeight;
+};
+
+getHeaderHeight = function() {
+	return 100;
 };
 
 
 //var backgroundBlock = backgroundImageBlock.create();
-var backgroundBlock = backgroundImageBlock();
-layout.content.add(backgroundBlock);
+
+// layout.content.add(backgroundBlock);
+//layout.add(backgroundBlock);
+//mainContext.add(backgroundBlock);
+
 
 /* Header block */
 //layout.header.add(headerBlockSurface());
 
 
 /* Create the Scroll view */
+
+
 var scroll = new Scrollview();
 var surfaces = [];
 scroll.sequenceFrom(surfaces);
 
-
-var headerBlock = headerBlockSurface();
-headerBlock.pipe(scroll);
-surfaces.push(headerBlock);
+/* No real need to have the header anymore */
+// var headerBlock = headerBlockSurface();
+// headerBlock.pipe(scroll);
+// surfaces.push(headerBlock);
 
 /* Add the title block to the scrollview */
 var titleBlock = titleBlockSurface();
@@ -79,9 +88,9 @@ eventHandler.on('swapPictures', function() {
 
 
 /* Create the main context */
-layout.content.add(scroll);
-mainContext.add(layout);
-
+//layout.content.add(scroll);
+mainContext.add(scroll);
+//mainContext.add(backgroundImageBlock());
 
 
 

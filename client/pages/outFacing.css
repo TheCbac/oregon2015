@@ -1,1 +1,6 @@
 /* CSS declarations go here */
+ @font-face { 
+ 	font-family: GothamHTF; 
+ 	src: 
+ 		url('/fonts/GothamHTFBlack.tff'); 
+ }

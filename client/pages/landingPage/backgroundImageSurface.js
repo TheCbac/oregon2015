@@ -8,20 +8,22 @@ var StateModifier   	= require('famous/modifiers/StateModifier');
 backgroundImageBlock = function() {
     
 	var imageBlockContainer = new ContainerSurface({
-			size: [undefined, undefined]
+			// size: [undefined, getBlockHeight()]
+			//size: [undefined, undefined]
 		});
 
 	/* Background image */
 	var imageBlock = new ImageSurface({
 		content:"/pictures/forest-landscape.jpeg",
-		size: [undefined ,undefined],
-		origin: [0.5, 0.5],
-	    align: [0.5, 0.5],
-	    //transform: Transform.translate(0, 0, 2)
+		size: [null ,undefined],
+		
+	    
 	});
 
 	var imageBlockMod = new StateModifier({
-		transform: Transform.translate(0, -100, -1),
+		transform: Transform.translate(0, 0, -1),
+		 // origin: [0.5, 0.5],
+	  //    align: [0, 0.5],
         });
 
 	var secondImageBlock = new ImageSurface({
@@ -29,16 +31,16 @@ backgroundImageBlock = function() {
 		size: [undefined ,true],
 		origin: [0.5, 0.5],
 	    align: [0.5, 0.5],
-	    //transform: Transform.translate(0, 0, -1)
+	    
 	});
 
 	var secondImageBlockMod = new StateModifier({
-		transform: Transform.translate(0, 0, -2),
+		transform: Transform.translate(0, 0, 1),
         });
 
 
-	//imageBlockContainer.add(secondImageBlockMod).add(secondImageBlock);
-	imageBlockContainer.add(imageBlockMod).add(imageBlock);
+	imageBlockContainer.add(secondImageBlockMod).add(secondImageBlock);
+	// imageBlockContainer.add(imageBlockMod).add(imageBlock);
 
 
 	return imageBlockContainer;

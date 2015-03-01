@@ -8,20 +8,28 @@ var ContainerSurface = require('famous/surfaces/ContainerSurface');
 titleBlockSurface =  function() {
 // block for text over image
 
-    /*
+    
     var nameTextBlock = new Surface({
     	content:"Oregon <p>2015</p>",
     	size: [undefined, 200],
             properties: {
                 //backgroundColor: "black",
-                
+                fontFamily:"GothamHTF",
                 color: "black",
                 lineHeight: '50px',
                 textAlign: 'center',
                 fontSize: '4em',
             }
     });
-*/
+
+    var nameTextBlockMod = new StateModifier({
+
+        //transform: Transform.translate(0, 0, 1),
+        origin: [0.5, 0.5],
+        align: [0.5, 0.6],
+
+    });
+
 
     nameImageBlock = new ImageSurface({
         content : '/pictures/frontier.png',
@@ -60,27 +68,61 @@ titleBlockSurface =  function() {
     });
 
 
+    var frontierArrowLogo = new ImageSurface({
+        content:"/pictures/frontier-arrows.png",
+        size: [true, 45],
+    });
 
+    var frontierHamburger = new ImageSurface({
+        content:"/pictures/hamburger.png",
+        size: [true, 30],
+    });
 
-    // First block
-    // var nameBlock = new ImageSurface({
-    // 	content:"/pictures/mount-hood.jpg",
-    // 	size: [undefined ,true],
-    // 	origin: [0.5, 0.5],
-    //     align: [0.5, 0.5],
-    // });
+    hamburgerMod = new StateModifier({
+        transform: Transform.translate(0, 0, 1),
+        origin: [0.5, 0.5],
+        align: [0.95, 0.05],});
+
+    frontierArrowMod = new StateModifier({
+        transform: Transform.translate(0, 0, 1),
+        origin: [0.5, 0.5],
+        align: [0.05, 0.05],});
+
+    var frontierMainLogo = new ImageSurface({
+        content:"/pictures/frontier.png",
+        size: [true, 75],
+        origin:[0.5,0.5],
+        align: [0.5,0.5]
+    });
 
 
 
 
     var container1 = new ContainerSurface({
         //size: [undefined, getBlockHeight()-100]
-        size: [undefined, 500]
+        size: [undefined, getBlockHeight()]
     });
 
+
+    var imageBlock = new ImageSurface({
+        content:"/pictures/forest-landscape.jpeg",
+        size: [undefined ,true],
+        
+        
+    });
+
+    var imageBlockMod = new StateModifier({
+        transform: Transform.translate(0, 0, -1),
+         // origin: [0.5, 0.5],
+      //    align: [0, 0.5],
+        });
+
+    container1.add(hamburgerMod).add(frontierHamburger);
+    container1.add(frontierArrowMod).add(frontierArrowLogo);
     container1.add(pullDownBlockStateMod).add(pullDownImageBlock);
     container1.add(textBlockStateMod).add(nameImageBlock);
-    //container1.add(nameBlock);
+    container1.add(imageBlockMod).add(imageBlock);
+    // container1.add(nameTextBlockMod).add(nameTextBlock);
 
 
     return container1;

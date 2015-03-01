@@ -8,7 +8,7 @@ var Transform 			= require('famous/core/Transform');
 headerBlockSurface = function() {
 
 	var headerBlockContainer = new ContainerSurface({
-		size: [undefined, 100]
+		size: [undefined, getHeaderHeight()]
 	}
 	);
 
