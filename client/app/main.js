@@ -9,6 +9,29 @@ var EventHandler 		= require('famous/core/EventHandler');
 
 
 
+//var aspectRatio = (window.innerWidth/window.innerHeight);
+
+/* add event listener for window resize */
+var addEvent = function(elem, type, eventHandle){
+	if (elem === null || typeof(elem) == 'undefined') return;
+	if ( elem.addEventListener ) {
+		elem.addEventListener( type, eventHandle, false);
+	} else if (elem.attachEvent) {
+		elem.attachEvent( "on" + type, eventHandle);
+	} else {
+		elem["on"+type]=eventHandle;
+	}
+};
+
+
+var getRatio = function(){
+	aspectRatio = (window.innerWidth/window.innerHeight);
+	console.log(aspectRatio);
+};
+
+
+addEvent(window, "resize", getRatio);
+
 /* height for the vertical size of the blocks */
 getBlockHeight = function() {
 	var winHeight = window.innerHeight;
@@ -19,6 +42,8 @@ getBlockHeight = function() {
 getHeaderHeight = function() {
 	return 100;
 };
+
+
 
 
 //var backgroundBlock = backgroundImageBlock.create();
@@ -77,6 +102,7 @@ var eventHandler = new EventHandler();
 
 hostBlock.on('mouseover', function(event){
 	console.log("test");
+	console.log(aspectRatio);
 	eventHandler.emit('swapPictures');
 });
 

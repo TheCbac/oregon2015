@@ -4,3 +4,9 @@
  	src: 
  		url('/fonts/GothamHTFBlack.tff'); 
  }
+
+
+ .testClass {
+ 	font-family: "Georgia";
+
+ }

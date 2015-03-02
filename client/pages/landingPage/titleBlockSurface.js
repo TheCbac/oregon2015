@@ -49,7 +49,7 @@ titleBlockSurface =  function() {
         //transform: Transform.translate(0, 0, 2)
         transform: Transform.translate(0, 0, 1),
         origin: [0.5, 0.5],
-        align: [0.5, 0.9],
+        align: [0.5, 0.95],
 
     });
 
@@ -117,11 +117,23 @@ titleBlockSurface =  function() {
       //    align: [0, 0.5],
         });
 
+    var oregonTextImage = new ImageSurface({
+        content:"/pictures/oregon2015mockup.png"
+    });
+
+    var oregonTextImageMod = new StateModifier({
+        size: [150, true],
+        tranform: Transform.translate(0,0,1),
+        origin: [0.5, 0.5],
+        align: [0.5, 0.5]
+    });
+
     container1.add(hamburgerMod).add(frontierHamburger);
     container1.add(frontierArrowMod).add(frontierArrowLogo);
     container1.add(pullDownBlockStateMod).add(pullDownImageBlock);
     container1.add(textBlockStateMod).add(nameImageBlock);
     container1.add(imageBlockMod).add(imageBlock);
+    container1.add(oregonTextImageMod).add(oregonTextImage);
     // container1.add(nameTextBlockMod).add(nameTextBlock);
 
 
